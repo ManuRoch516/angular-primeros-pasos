@@ -1,0 +1,29 @@
+<h3>Listado de Heroes</h3>
+
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Héroe borrado <small class="text-danger">{{deletedHero}}</small></h3>
+</div>
+
+<!-- referenecia local con el ngIf y el else -->
+<ng-template #nothingWasDeleted>
+  <h3>No ha Borrado nada.</h3>
+</ng-template>
+
+<button
+*ngIf="heroNames.length > 0"
+class="btn btn-outline-danger"
+(click)="removeLastHero()">
+  Borrar último héroe
+</button>
+
+
+<ul class="mt-2 list-group">
+  <!-- <li class="list-group-item">Spiderman</li>
+  <li class="list-group-item">Thor</li>
+  <li class="list-group-item">Ironman</li>
+  <li class="list-group-item">Hulk</li> -->
+
+  <!-- ?Con nFor seria asi -->
+   <!-- * crear un template de html en la cantidad de elementos que tenemos -->
+   <li *ngFor="let name of heroNames">{{name}}</li>
+</ul>
